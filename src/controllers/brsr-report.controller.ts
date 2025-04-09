@@ -18,7 +18,12 @@ export class BrsrReportController {
         {
           children: [
             new Paragraph({text: 'BRSR Report', heading: 'Title'}),
-            new Paragraph({text: 'Index', pageBreakBefore: true}),
+            new Paragraph({text: '', pageBreakBefore: true}),
+            new Paragraph({
+              text: 'Index',
+              heading: 'Heading1',
+              pageBreakBefore: true,
+            }),
             ...index,
             new Paragraph({text: '', pageBreakBefore: true}),
             ...sections,
@@ -54,62 +59,145 @@ export class BrsrReportController {
   }
 
   generateReportContent(selected: string) {
-    const allPrinciples = [
-      'Principle 1: Ethics and Transparency',
-      'Principle 2: Product Lifecycle',
-      'Principle 3: Employee Wellbeing',
-      'Principle 4: Stakeholder Engagement',
-      'Principle 5: Human Rights',
-      'Principle 6: Environment',
-      'Principle 7: Policy Advocacy',
-      'Principle 8: Inclusive Growth',
-      'Principle 9: Customer Value',
+    const principles = [
+      {
+        name: 'Principle 1: Ethics and Transparency',
+        description:
+          'Focus on fair practices, disclosures, and grievance redressal mechanisms.',
+        metrics: [
+          {label: 'Whistleblower Complaints', value: 12},
+          {
+            label: 'Resolution Rate',
+            value: '95%',
+            formula: 'resolved / total * 100',
+          },
+        ],
+      },
+      {
+        name: 'Principle 2: Product Lifecycle',
+        description:
+          'Promote sustainable product development and responsible use.',
+        metrics: [
+          {
+            label: 'Eco-friendly Products (%)',
+            value: 60,
+            formula: '(ecoProducts / totalProducts) * 100',
+          },
+        ],
+      },
+      {
+        name: 'Principle 3: Employee Wellbeing',
+        description: 'Ensure employee health, safety, and skill development.',
+        metrics: [{label: 'Training Hours per Employee', value: 24}],
+      },
     ];
 
-    const reordered = [selected, ...allPrinciples.filter(p => p !== selected)];
+    const selectedPrinciple = principles.find(p => p.name === selected);
+
+    if (!selectedPrinciple) {
+      throw new Error('Selected principle not found');
+    }
+
+    const reordered = [
+      selectedPrinciple,
+      ...principles.filter(p => p.name !== selected),
+    ];
 
     const index = reordered.map(
       p =>
         new Paragraph({
-          text: `${p} – Summary of ${p.toLowerCase()}`,
+          text: `${p.name} – ${p.description}`,
           bullet: {level: 0},
         }),
     );
 
-    const sections = reordered
-      .map(p => [
+    const sections = reordered.flatMap(p => {
+      const metricParagraphs =
+        p.metrics?.map(
+          m =>
+            new Paragraph({
+              text: `${m.label}: ${m.value}${
+                m.formula ? ` (Formula: ${m.formula})` : ''
+              }`,
+              bullet: {level: 1},
+            }),
+        ) ?? [];
+
+      return [
         new Paragraph({
-          text: p,
+          text: p.name,
           heading: 'Heading1',
           pageBreakBefore: true,
         }),
+        new Paragraph({text: p.description}),
+        ...metricParagraphs,
         new Paragraph({
-          text: `This is the detailed description of ${p}. You can include tables, data points, or any rich content here.`,
+          text: 'Future updates will include automated data and formula-driven metrics for this principle.',
         }),
-      ])
-      .flat();
+      ];
+    });
 
     return {index, sections};
   }
 
   generateHtmlReport(selected: string) {
     const principles = [
-      'Principle 1: Ethics and Transparency',
-      'Principle 2: Product Lifecycle',
-      'Principle 3: Employee Wellbeing',
-      'Principle 4: Stakeholder Engagement',
-      'Principle 5: Human Rights',
-      'Principle 6: Environment',
-      'Principle 7: Policy Advocacy',
-      'Principle 8: Inclusive Growth',
-      'Principle 9: Customer Value',
+      {
+        name: 'Principle 1: Ethics and Transparency',
+        description:
+          'Focus on fair practices, disclosures, and grievance redressal mechanisms.',
+        metrics: [
+          {label: 'Whistleblower Complaints', value: 12},
+          {
+            label: 'Resolution Rate',
+            value: '95%',
+            formula: 'resolved / total * 100',
+          },
+        ],
+      },
+      {
+        name: 'Principle 2: Product Lifecycle',
+        description:
+          'Promote sustainable product development and responsible use.',
+        metrics: [
+          {
+            label: 'Eco-friendly Products (%)',
+            value: 60,
+            formula: '(ecoProducts / totalProducts) * 100',
+          },
+        ],
+      },
+      {
+        name: 'Principle 3: Employee Wellbeing',
+        description: 'Ensure employee health, safety, and skill development.',
+        metrics: [{label: 'Training Hours per Employee', value: 24}],
+      },
     ];
 
-    const reordered = [selected, ...principles.filter(p => p !== selected)];
+    const reordered = [
+      ...principles.filter(p => p.name === selected),
+      ...principles.filter(p => p.name !== selected),
+    ];
 
-    const indexList = reordered.map(p => `<li>${p}</li>`).join('');
+    const indexList = reordered
+      .map(p => `<li><strong>${p.name}</strong> – ${p.description}</li>`)
+      .join('');
+
     const contentSections = reordered
-      .map(p => `<h2>${p}</h2><p>Description about ${p}</p>`)
+      .map(p => {
+        const metrics = p.metrics
+          ?.map(
+            m =>
+              `<li>${m.label}: ${m.value}${
+                m.formula ? ` (Formula: ${m.formula})` : ''
+              }</li>`,
+          )
+          .join('');
+        return `<h2>${p.name}</h2>
+          <p>${p.description}</p>
+          <ul>${metrics}</ul>
+          <p><em>Future updates will include automated data and formula-driven metrics for this principle.</em></p>`;
+      })
       .join('<div class="page-break"></div>');
 
     return `
