@@ -1,16 +1,17 @@
-// Uncomment these imports to begin using these cool features!
-
 import {inject} from '@loopback/core';
-import {RestBindings, Response, get} from '@loopback/rest';
+import {RestBindings, Response, post, requestBody} from '@loopback/rest';
 import {Document, Paragraph, Packer} from 'docx';
 import * as fs from 'fs';
 import * as path from 'path';
 import puppeteer from 'puppeteer';
 
 export class BrsrReportController {
-  @get('/report/download/word')
-  async downloadWord(@inject(RestBindings.Http.RESPONSE) response: Response) {
-    const {index, sections} = this.generateReportContent();
+  @post('/report/download/word')
+  async downloadWord(
+    @inject(RestBindings.Http.RESPONSE) response: Response,
+    @requestBody() body: {selected: string},
+  ) {
+    const {index, sections} = this.generateReportContent(body.selected);
 
     const doc = new Document({
       sections: [
@@ -33,9 +34,12 @@ export class BrsrReportController {
     return response;
   }
 
-  @get('/report/download/pdf')
-  async downloadPDF(@inject(RestBindings.Http.RESPONSE) response: Response) {
-    const html = this.generateHtmlReport();
+  @post('/report/download/pdf')
+  async downloadPDF(
+    @inject(RestBindings.Http.RESPONSE) response: Response,
+    @requestBody() body: {selected: string},
+  ) {
+    const html = this.generateHtmlReport(body.selected);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -49,33 +53,64 @@ export class BrsrReportController {
     return response;
   }
 
-  generateReportContent() {
-    const principles = [
+  generateReportContent(selected: string) {
+    const allPrinciples = [
       'Principle 1: Ethics and Transparency',
       'Principle 2: Product Lifecycle',
       'Principle 3: Employee Wellbeing',
+      'Principle 4: Stakeholder Engagement',
+      'Principle 5: Human Rights',
+      'Principle 6: Environment',
+      'Principle 7: Policy Advocacy',
+      'Principle 8: Inclusive Growth',
+      'Principle 9: Customer Value',
     ];
 
-    const index = principles.map(p => new Paragraph({text: p}));
-    const sections = principles.map(
-      p => new Paragraph({text: `\n\n${p}\nDescription of ${p}...`}),
+    const reordered = [selected, ...allPrinciples.filter(p => p !== selected)];
+
+    const index = reordered.map(
+      p =>
+        new Paragraph({
+          text: `${p} – Summary of ${p.toLowerCase()}`,
+          bullet: {level: 0},
+        }),
     );
+
+    const sections = reordered
+      .map(p => [
+        new Paragraph({
+          text: p,
+          heading: 'Heading1',
+          pageBreakBefore: true,
+        }),
+        new Paragraph({
+          text: `This is the detailed description of ${p}. You can include tables, data points, or any rich content here.`,
+        }),
+      ])
+      .flat();
 
     return {index, sections};
   }
 
-  generateHtmlReport() {
+  generateHtmlReport(selected: string) {
     const principles = [
       'Principle 1: Ethics and Transparency',
       'Principle 2: Product Lifecycle',
       'Principle 3: Employee Wellbeing',
-      // ...
+      'Principle 4: Stakeholder Engagement',
+      'Principle 5: Human Rights',
+      'Principle 6: Environment',
+      'Principle 7: Policy Advocacy',
+      'Principle 8: Inclusive Growth',
+      'Principle 9: Customer Value',
     ];
 
-    const indexList = principles.map(p => `<li>${p}</li>`).join('');
-    const contentSections = principles
+    const reordered = [selected, ...principles.filter(p => p !== selected)];
+
+    const indexList = reordered.map(p => `<li>${p}</li>`).join('');
+    const contentSections = reordered
       .map(p => `<h2>${p}</h2><p>Description about ${p}</p>`)
-      .join('<hr/>');
+      .join('<div class="page-break"></div>');
 
     return `
        <html>
