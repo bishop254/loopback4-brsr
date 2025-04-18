@@ -18,7 +18,7 @@ if (require.main === module) {
   // Run the application
   const config = {
     rest: {
-      port: +(process.env.PORT ?? 3000),
+      port: +(process.env.PORT ?? 3001),
       host: process.env.HOST || '127.0.0.1',
       cors: {
         origin: '*',
