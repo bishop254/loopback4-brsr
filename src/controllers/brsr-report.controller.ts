@@ -1,5 +1,5 @@
 import {inject} from '@loopback/core';
-import {RestBindings, Response, post, requestBody} from '@loopback/rest';
+import {Response, RestBindings, post, requestBody} from '@loopback/rest';
 import * as path from 'path';
 import puppeteer from 'puppeteer';
 
@@ -19,14 +19,14 @@ export class BrsrReportController {
     const page = await browser.newPage();
     await page.setContent(html, {waitUntil: 'networkidle0'});
 
-    const filePath = path.join(__dirname, '../../files/brsr.pdf');
+    const filePath = path.join(__dirname, '../../files/gri.pdf');
     await page.pdf({path: filePath, format: 'A4', printBackground: true});
     await browser.close();
 
     response.setHeader('Content-Type', 'application/pdf');
     response.setHeader(
       'Content-Disposition',
-      'attachment; filename="BRSR_Report.pdf"',
+      'attachment; filename="GRI_Report.pdf"',
     );
     response.download(filePath);
     return response;
