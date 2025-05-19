@@ -1,19 +1,20 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_2(data: any) {
   return [
-    new Paragraph({
-      text: 'Disclosure 2-2: Entities included in the organization’s sustainability reporting',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow(
+          'Entities included in the organization’s sustainability reporting',
+          ['GRI 2-2', 'ESRS 1 5.1', 'ESRS 2', 'BP-1'],
+        ),
+      ],
     }),
     new Paragraph({
       text: 'The organization shall:',

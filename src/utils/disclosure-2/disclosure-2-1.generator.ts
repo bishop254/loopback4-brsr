@@ -1,4 +1,5 @@
 import {
+  BorderStyle,
   HeadingLevel,
   Paragraph,
   Table,
@@ -7,34 +8,34 @@ import {
   TextRun,
   WidthType,
 } from 'docx';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_1(data: any) {
+  const noBorders = {
+    top: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+    bottom: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+    left: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+    right: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  };
+
   return [
     new Paragraph({
-      children: [
-        new TextRun({
-          text: 'GRI 2',
-          bold: true,
-          size: 36,
-        }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: '1. The organization and its reporting practices',
-          bold: true,
-          size: 30,
-        }),
-      ],
-    }),
-    new Paragraph({
-      text: 'Disclosure 2-1: Organizational details',
+      text: 'The organization and its reporting practices',
       heading: HeadingLevel.HEADING_2,
     }),
+
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [generateTitleRow('Organizational details', ['GRI 2-1'])],
+    }),
+
     new Paragraph({
       text: 'The organization shall:',
     }),
+
     new Table({
       width: {
         size: 100,
@@ -83,6 +84,7 @@ export function generateDisclosure2_1(data: any) {
         ),
       ],
     }),
+
     new Paragraph({
       children: [
         new TextRun({
@@ -91,8 +93,7 @@ export function generateDisclosure2_1(data: any) {
         }),
       ],
     }),
-    new Paragraph({
-      text: '',
-    }),
+
+    new Paragraph({text: ''}),
   ];
 }

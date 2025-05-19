@@ -1,21 +1,35 @@
-import {HeadingLevel, Paragraph, TextRun} from 'docx';
+import {Table, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_6(data: any) {
   return [
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: '2. Activities and workers',
-          bold: true,
-          size: 30,
-        }),
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Activities and workers', [
+          'GRI 2-6',
+          'ESRS 2 SBM-1 40',
+          'SBM-1_01',
+          'SBM-1_01',
+          'SBM-1_05',
+          'SBM-1_07',
+          'SBM-1_08',
+          'SBM-1_09',
+          'SBM-1_15',
+          'SBM-1_16',
+          'SBM-1_17',
+          'SBM-1_18',
+          'SBM-1_19',
+          'SBM-1_25',
+          'SBM-1_28',
+        ]),
       ],
     }),
-    new Paragraph({
-      text: 'Disclosure 2-6 Activities, value chain and other business relationships',
-      heading: HeadingLevel.HEADING_2,
-    }),
+
     ...emptyTable(data ?? {}),
   ];
 }

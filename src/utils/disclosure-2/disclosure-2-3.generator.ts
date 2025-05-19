@@ -1,19 +1,21 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_3(data: any) {
   return [
-    new Paragraph({
-      text: 'Disclosure 2-3: Reporting period, frequency and contact point',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Reporting period, frequency and contact point', [
+          'GRI 2-3',
+          'ESRS 1 73',
+        ]),
+      ],
     }),
+
     new Paragraph({
       text: 'The organization shall:',
     }),
