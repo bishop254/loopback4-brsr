@@ -1,34 +1,130 @@
+// LoopBack 4 based implementation
 import {inject} from '@loopback/core';
-import {Response, RestBindings, post, requestBody} from '@loopback/rest';
-import * as path from 'path';
-import puppeteer from 'puppeteer';
+import {post, requestBody, Response, RestBindings} from '@loopback/rest';
+import {
+  AlignmentType,
+  Document,
+  HeadingLevel,
+  Packer,
+  PageBreak,
+  Paragraph,
+  Table,
+  TableCell,
+  TableOfContents,
+  TableRow,
+} from 'docx';
 
-export class BrsrReportController {
-  @post('/report/download/pdf')
-  async downloadPDF(
-    @inject(RestBindings.Http.RESPONSE) response: Response,
-    @requestBody() body: {html: string},
-  ): Promise<Response> {
-    const html = body.html;
+export class ReportController {
+  constructor(@inject(RestBindings.Http.RESPONSE) private response: Response) {}
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  // helper to generate Disclosure 2-1
+  generateDisclosure2_1(data: any) {
+    return [
+      new Paragraph({
+        text: 'Disclosure 2-1: Organizational details',
+        heading: HeadingLevel.HEADING_1,
+      }),
+      new Paragraph({
+        text: 'The organization shall:',
+      }),
+      new Table({
+        rows: [
+          ['Legal Name', data.legalName],
+          ['Ownership and Legal Form', data.ownershipForm],
+          ['Headquarters', data.headquarters],
+          ['Countries of Operation', data.countriesOfOperation],
+        ].map(
+          ([label, value]) =>
+            new TableRow({
+              children: [
+                new TableCell({children: [new Paragraph(label)]}),
+                new TableCell({children: [new Paragraph(value || '-')]}),
+              ],
+            }),
+        ),
+      }),
+      new Paragraph({text: '', children: [new PageBreak()]}),
+    ];
+  }
+
+  // document generator
+  async generateDocx(data: any): Promise<Buffer> {
+    const doc = new Document({
+      sections: [
+        {
+          children: [
+            new Paragraph({
+              text: 'Sustainability Report',
+              heading: HeadingLevel.TITLE,
+              alignment: AlignmentType.CENTER,
+            }),
+            new Paragraph({
+              text: 'Table of Contents',
+              heading: HeadingLevel.HEADING_1,
+            }),
+            new TableOfContents('Table of Contents', {
+              hyperlink: true,
+              headingStyleRange: '1-5',
+            }),
+            new Paragraph({text: '', children: [new PageBreak()]}),
+
+            // Disclosure sections
+            ...this.generateDisclosure2_1(data.disclosure_2_1 || {}),
+          ],
+        },
+      ],
     });
 
-    const page = await browser.newPage();
-    await page.setContent(html, {waitUntil: 'networkidle0'});
+    return Packer.toBuffer(doc);
+  }
 
-    const filePath = path.join(__dirname, '../../files/gri.pdf');
-    await page.pdf({path: filePath, format: 'A4', printBackground: true});
-    await browser.close();
-
-    response.setHeader('Content-Type', 'application/pdf');
-    response.setHeader(
-      'Content-Disposition',
-      'attachment; filename="GRI_Report.pdf"',
-    );
-    response.download(filePath);
-    return response;
+  @post('/generate-report', {
+    responses: {
+      '200': {
+        description: 'Generate Sustainability Report',
+        content: {
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+            {schema: {type: 'string', format: 'binary'}},
+        },
+      },
+    },
+  })
+  async generateReport(
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              disclosure_2_1: {
+                type: 'object',
+                properties: {
+                  legalName: {type: 'string'},
+                  ownershipForm: {type: 'string'},
+                  headquarters: {type: 'string'},
+                  countriesOfOperation: {type: 'string'},
+                },
+              },
+            },
+          },
+        },
+      },
+    })
+    data: any,
+  ): Promise<void> {
+    try {
+      const buffer = await this.generateDocx(data);
+      const fileName = 'Sustainability_Report.docx';
+      this.response.setHeader(
+        'Content-Disposition',
+        `attachment; filename=${fileName}`,
+      );
+      this.response.contentType(
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      );
+      this.response.send(buffer);
+    } catch (err: any) {
+      this.response.status(500).json({error: err.message});
+    }
   }
 }
