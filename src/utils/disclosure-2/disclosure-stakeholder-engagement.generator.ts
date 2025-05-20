@@ -1,29 +1,55 @@
-import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
+import {
+  BorderStyle,
+  Paragraph,
+  Table,
+  TableCell,
+  TableRow,
+  TextRun,
+  WidthType,
+} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
+const bottomBorderOnly = {
+  top: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  bottom: {style: BorderStyle.SINGLE, size: 1, color: '#2f5496'},
+  left: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  right: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+};
+
+const noBorders = {
+  top: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  bottom: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  left: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+  right: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
+};
+
 export function generateDisclosureStakeholderEngagement(data: any) {
-  const rows = (data?.engagements ?? []).map((entry: any) => {
-    return new TableRow({
+  const rows = [
+    new TableRow({
       children: [
         new TableCell({
           width: {size: 25, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(entry.stakeholder ?? '')],
+          children: [new Paragraph('')],
+          borders: bottomBorderOnly,
         }),
         new TableCell({
           width: {size: 25, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(entry.process ?? '')],
+          children: [new Paragraph('')],
+          borders: bottomBorderOnly,
         }),
         new TableCell({
           width: {size: 25, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(entry.objective ?? '')],
+          children: [new Paragraph('')],
+          borders: bottomBorderOnly,
         }),
         new TableCell({
           width: {size: 25, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(entry.frequency ?? '')],
+          children: [new Paragraph('')],
+          borders: bottomBorderOnly,
         }),
       ],
-    });
-  });
+    }),
+  ];
 
   return [
     new Table({
@@ -35,8 +61,8 @@ export function generateDisclosureStakeholderEngagement(data: any) {
         generateTitleRow(
           'Stakeholder engagement',
           [
-            'GRI 2-29 ESRS 2',
-            'SBM-2_01',
+            'GRI 2-29',
+            'ESRS 2 SBM-2_01',
             'SBM-2_02',
             'SBM-2_03',
             'SBM-2_04',
@@ -68,6 +94,10 @@ export function generateDisclosureStakeholderEngagement(data: any) {
       ],
     }),
 
+    new Paragraph({
+      text: '',
+    }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -78,14 +108,26 @@ export function generateDisclosureStakeholderEngagement(data: any) {
                 width: {size: 25, type: WidthType.PERCENTAGE},
                 children: [
                   new Paragraph({
-                    children: [new TextRun({text: header, bold: true})],
+                    children: [
+                      new TextRun({
+                        text: header,
+                        bold: true,
+                        italics: true,
+                        color: '#2f5496',
+                      }),
+                    ],
                   }),
                 ],
+                borders: noBorders,
               }),
           ),
         }),
         ...rows,
       ],
+    }),
+
+    new Paragraph({
+      text: '',
     }),
   ];
 }

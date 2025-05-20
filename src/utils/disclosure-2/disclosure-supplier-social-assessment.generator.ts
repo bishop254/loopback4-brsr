@@ -20,6 +20,8 @@ export function generateDisclosureSupplierSocialAssessment(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -53,6 +55,8 @@ export function generateDisclosureSupplierSocialAssessment(data: any) {
         }),
       ],
     }),
+
+    new Paragraph({text: ''}),
 
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
@@ -129,5 +133,7 @@ export function generateDisclosureSupplierSocialAssessment(data: any) {
         }),
       ],
     }),
+
+    new Paragraph({text: ''}),
   ];
 }

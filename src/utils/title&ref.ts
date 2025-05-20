@@ -59,7 +59,7 @@ export function generateTitleRow(
                 new TextRun({
                   text: r + (i < refs.length - 1 ? ', ' : ''),
                   color: '#ed7d31',
-                  size: '5pt',
+                  size: '6pt',
                 }),
             ),
           }),

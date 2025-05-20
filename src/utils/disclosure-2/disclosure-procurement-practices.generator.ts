@@ -22,6 +22,8 @@ export function generateDisclosureProcurementPractices(data: any) {
       rows: [generateTitleRow('Procurement Practices', ['GRI 204-1'], true)],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {
         size: 100,
@@ -67,12 +69,15 @@ export function generateDisclosureProcurementPractices(data: any) {
             new TableRow({
               children: [
                 new TableCell({
+                  width: {size: 40, type: WidthType.PERCENTAGE},
                   children: [new Paragraph(label)],
                 }),
                 new TableCell({
+                  width: {size: 30, type: WidthType.PERCENTAGE},
                   children: [new Paragraph(loc1 ?? '')],
                 }),
                 new TableCell({
+                  width: {size: 30, type: WidthType.PERCENTAGE},
                   children: [new Paragraph(loc2 ?? '')],
                 }),
               ],

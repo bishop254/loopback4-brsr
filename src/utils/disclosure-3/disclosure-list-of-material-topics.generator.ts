@@ -2,20 +2,20 @@ import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureMaterialTopics(data: any) {
-  const rows = (data?.materialTopics ?? []).map((item: any) => {
-    return new TableRow({
+  const rows = [
+    new TableRow({
       children: [
         new TableCell({
           width: {size: 50, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(item.topic ?? '')],
+          children: [new Paragraph('')],
         }),
         new TableCell({
           width: {size: 50, type: WidthType.PERCENTAGE},
-          children: [new Paragraph(item.priority ?? '')],
+          children: [new Paragraph('')],
         }),
       ],
-    });
-  });
+    }),
+  ];
 
   return [
     new Table({
@@ -32,6 +32,8 @@ export function generateDisclosureMaterialTopics(data: any) {
         ]),
       ],
     }),
+
+    new Paragraph({text: ''}),
 
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},

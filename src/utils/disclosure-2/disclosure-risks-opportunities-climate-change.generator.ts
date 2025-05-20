@@ -46,6 +46,8 @@ export function generateDisclosureRisksOpportunitiesClimateChange(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Paragraph({
       children: [
         new TextRun({

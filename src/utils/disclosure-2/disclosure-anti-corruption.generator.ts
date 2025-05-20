@@ -27,12 +27,15 @@ export function generateDisclosureAntiCorruption(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particular', bold: true})],
@@ -40,6 +43,7 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [],
             }),
           ],
@@ -47,6 +51,7 @@ export function generateDisclosureAntiCorruption(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(
                   'Total number of operations assessed for risks related to corruption.',
@@ -54,6 +59,7 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(data?.corruptionAssessmentCount ?? 'MT'),
               ],
@@ -78,6 +84,8 @@ export function generateDisclosureAntiCorruption(data: any) {
         }),
       ],
     }),
+
+    new Paragraph({text: ''}),
 
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
@@ -169,6 +177,8 @@ export function generateDisclosureAntiCorruption(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -228,6 +238,8 @@ export function generateDisclosureAntiCorruption(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -283,6 +295,8 @@ export function generateDisclosureAntiCorruption(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Paragraph({
       children: [
         new TextRun({
@@ -298,18 +312,27 @@ export function generateDisclosureAntiCorruption(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particulars', bold: true})],
                 }),
               ],
             }),
-            new TableCell({children: []}),
+            new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: ''})],
+                }),
+              ],
+            }),
           ],
         }),
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(
                   'Total number of confirmed incidents of corruption',
@@ -317,6 +340,7 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [new Paragraph(data?.confirmedTotal ?? '')],
             }),
           ],
@@ -324,6 +348,7 @@ export function generateDisclosureAntiCorruption(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(
                   'Total number of confirmed incidents in which employees were dismissed or disciplined for corruption',
@@ -331,6 +356,7 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [new Paragraph(data?.confirmedDismissed ?? '')],
             }),
           ],
@@ -338,6 +364,7 @@ export function generateDisclosureAntiCorruption(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(
                   'Total number of confirmed incidents when contracts with business partners were terminated or not renewed due to violations related to corruption.',
@@ -345,6 +372,7 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(data?.confirmedTerminatedPartners ?? ''),
               ],
@@ -354,6 +382,7 @@ export function generateDisclosureAntiCorruption(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph(
                   'Public legal cases regarding corruption brought against the organization or its employees during the reporting period and the outcomes of such cases.',
@@ -361,11 +390,14 @@ export function generateDisclosureAntiCorruption(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [new Paragraph(data?.confirmedLegalCases ?? '')],
             }),
           ],
         }),
       ],
     }),
+
+    new Paragraph({text: ''}),
   ];
 }

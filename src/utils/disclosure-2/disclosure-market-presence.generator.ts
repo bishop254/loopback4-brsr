@@ -17,6 +17,7 @@ export function generateDisclosureMarketPresence(data: any) {
         ),
       ],
     }),
+
     ...emptyTable(data ?? {}),
   ];
 }

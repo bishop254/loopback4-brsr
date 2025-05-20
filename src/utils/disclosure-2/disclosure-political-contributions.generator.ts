@@ -24,19 +24,29 @@ export function generateDisclosurePoliticalContributions(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particular', bold: true})],
                 }),
               ],
             }),
-            new TableCell({children: []}),
+            new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: '', bold: true})],
+                }),
+              ],
+            }),
           ],
         }),
         new TableRow({

@@ -20,15 +20,22 @@ import {generateDisclosure2_8} from '../utils/disclosure-2/disclosure-2-8.genera
 import {generateDisclosureAnnualTotalCompensationRatio} from '../utils/disclosure-2/disclosure-annual-total-compensation-ratio.generator';
 import {generateDisclosureAntiCompetitiveBehavior} from '../utils/disclosure-2/disclosure-anti-competitive-behavior.generator';
 import {generateDisclosureAntiCorruption} from '../utils/disclosure-2/disclosure-anti-corruption.generator';
+import {generateDisclosureBiodiversity} from '../utils/disclosure-2/disclosure-biodiversity.generator';
 import {generateDisclosureCollectiveBargainingAgreements} from '../utils/disclosure-2/disclosure-collective-bargaining-agreements.generator';
 import {generateDisclosureComplianceLawsRegulations} from '../utils/disclosure-2/disclosure-compliance-laws-regulations.generator';
 import {generateDisclosureConflictsInterest} from '../utils/disclosure-2/disclosure-conflicts-of-interest.generator';
 import {generateDisclosureEconomicPerformance} from '../utils/disclosure-2/disclosure-economic-performance.generator';
+import {generateDisclosureEnergyOutside} from '../utils/disclosure-2/disclosure-energy-consumption-outside-organization.generator';
+import {generateDisclosureEnergyReductionProducts} from '../utils/disclosure-2/disclosure-energy-intensity-products-services.generator';
+import {generateDisclosureEnergyIntensity} from '../utils/disclosure-2/disclosure-energy-intensity.generator';
+import {generateDisclosureEnergyReduction} from '../utils/disclosure-2/disclosure-energy-reduction.generator';
+import {generateDisclosureEnergy} from '../utils/disclosure-2/disclosure-energy.generator';
 import {generateDisclosureGovernanceStructureComposition} from '../utils/disclosure-2/disclosure-governance-structure-composition.generator';
 import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
 import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
 import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure-market-presence.generator';
 import {generateDisclosureMaterialityAssessment} from '../utils/disclosure-2/disclosure-materiality-assessment.generator';
+import {generateDisclosureMaterials} from '../utils/disclosure-2/disclosure-materials.generator';
 import {generateDisclosureMembershipAssociations} from '../utils/disclosure-2/disclosure-membership-associations.generator';
 import {generateDisclosureOrganizationReportingPractices} from '../utils/disclosure-2/disclosure-organization-reporting-practices.generator';
 import {generateDisclosurePolicyCommitments} from '../utils/disclosure-2/disclosure-policy-commitments.generator';
@@ -44,6 +51,10 @@ import {generateDisclosureStrategyPoliciesPractices} from '../utils/disclosure-2
 import {generateDisclosureSupplierEnvironmental} from '../utils/disclosure-2/disclosure-supplier-environmental-assessment.generator';
 import {generateDisclosureSupplierSocialAssessment} from '../utils/disclosure-2/disclosure-supplier-social-assessment.generator';
 import {generateDisclosureTax} from '../utils/disclosure-2/disclosure-tax.generator';
+import {generateDisclosureWaterConsumption} from '../utils/disclosure-2/disclosure-water-consumption.generator';
+import {generateDisclosureWaterDischarge} from '../utils/disclosure-2/disclosure-water-discharge.generator';
+import {generateDisclosureWaterEffluents} from '../utils/disclosure-2/disclosure-water-effluents.generator';
+import {generateDisclosureWaterWithdrawal} from '../utils/disclosure-2/disclosure-water-withdrawals.generator';
 import {generateDisclosureMaterialTopics} from '../utils/disclosure-3/disclosure-list-of-material-topics.generator';
 
 export class ReportController {
@@ -104,6 +115,17 @@ export class ReportController {
             ...generateDisclosureTax({}),
             ...generateDisclosurePublicPolicy({}),
             ...generateDisclosurePoliticalContributions({}),
+            ...generateDisclosureMaterials({}),
+            ...generateDisclosureEnergy({}),
+            ...generateDisclosureEnergyOutside({}),
+            ...generateDisclosureEnergyIntensity({}),
+            ...generateDisclosureEnergyReduction({}),
+            ...generateDisclosureEnergyReductionProducts({}),
+            ...generateDisclosureWaterEffluents({}),
+            ...generateDisclosureWaterWithdrawal({}),
+            ...generateDisclosureWaterDischarge({}),
+            ...generateDisclosureWaterConsumption({}),
+            ...generateDisclosureBiodiversity({}),
           ],
         },
       ],

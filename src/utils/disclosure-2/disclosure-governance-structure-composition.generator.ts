@@ -52,6 +52,8 @@ export function generateDisclosureGovernanceStructureComposition(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -73,11 +75,33 @@ export function generateDisclosureGovernanceStructureComposition(data: any) {
             }),
           ],
         }),
+        new TableRow({
+          children: [
+            new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: ''})],
+                }),
+              ],
+            }),
+            new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: ''})],
+                }),
+              ],
+            }),
+          ],
+        }),
       ],
     }),
+
     new Paragraph({
       text: '',
     }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [

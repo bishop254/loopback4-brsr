@@ -1,4 +1,4 @@
-import {Table, WidthType} from 'docx';
+import {Paragraph, Table, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_7(data: any) {
@@ -20,6 +20,8 @@ export function generateDisclosure2_7(data: any) {
         ]),
       ],
     }),
+
+    new Paragraph({text: ''}),
 
     // ...emptyTable(data ?? {}),
   ];

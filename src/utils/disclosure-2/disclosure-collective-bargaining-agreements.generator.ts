@@ -31,6 +31,8 @@ export function generateDisclosureCollectiveBargainingAgreements(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [

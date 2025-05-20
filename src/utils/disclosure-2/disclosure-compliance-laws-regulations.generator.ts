@@ -46,6 +46,8 @@ export function generateDisclosureComplianceLawsRegulations(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -73,8 +75,14 @@ export function generateDisclosureComplianceLawsRegulations(data: any) {
           ([label, value]) =>
             new TableRow({
               children: [
-                new TableCell({children: [new Paragraph(label)]}),
-                new TableCell({children: [new Paragraph(value ?? '')]}),
+                new TableCell({
+                  width: {size: 50, type: WidthType.PERCENTAGE},
+                  children: [new Paragraph(label)],
+                }),
+                new TableCell({
+                  width: {size: 50, type: WidthType.PERCENTAGE},
+                  children: [new Paragraph(value ?? '')],
+                }),
               ],
             }),
         ),

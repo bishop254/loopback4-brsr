@@ -25,6 +25,7 @@ export function generateDisclosureIndirectEconomicImpact(data: any) {
         ),
       ],
     }),
+
     ...emptyTable(data ?? {}),
   ];
 }

@@ -17,12 +17,15 @@ export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particulars', bold: true})],
@@ -30,6 +33,7 @@ export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Response', bold: true})],
@@ -63,6 +67,7 @@ export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particulars', bold: true})],
@@ -70,6 +75,7 @@ export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
               ],
             }),
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Response', bold: true})],
@@ -96,5 +102,7 @@ export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
         }),
       ],
     }),
+
+    new Paragraph({text: ''}),
   ];
 }

@@ -1,9 +1,13 @@
-import {Table, WidthType} from 'docx';
+import {Paragraph, Table, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureMembershipAssociations(data: any) {
   return [
+    new Paragraph({
+      text: '',
+    }),
+
     new Table({
       width: {
         size: 100,

@@ -35,6 +35,8 @@ export function generateDisclosureEconomicPerformance(data: any) {
       ],
     }),
 
+    new Paragraph({text: ''}),
+
     new Table({
       width: {
         size: 100,

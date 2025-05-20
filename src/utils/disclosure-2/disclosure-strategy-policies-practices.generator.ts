@@ -6,7 +6,7 @@ export function generateDisclosureStrategyPoliciesPractices(data: any) {
   return [
     new Paragraph({
       text: 'Strategy, policies and practices',
-      heading: HeadingLevel.HEADING_1,
+      heading: HeadingLevel.HEADING_2,
     }),
 
     new Table({
