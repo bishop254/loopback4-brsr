@@ -1,12 +1,5 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure3_2(data: any) {
   const rows = (data?.materialTopics ?? []).map((item: any) => {
@@ -25,10 +18,21 @@ export function generateDisclosure3_2(data: any) {
   });
 
   return [
-    new Paragraph({
-      text: 'Disclosure 3-2 List of material topics',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('List of material topics', [
+          'GRI 3-2',
+          'ESRS 2 BP-2_21',
+          'ESRS 2 BP-2_22',
+          'ESRS 2 SBM-3_01, SBM-3_04, SBM-3_07, SBM-3_11',
+        ]),
+      ],
     }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [

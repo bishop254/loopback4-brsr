@@ -71,5 +71,9 @@ export function generateDisclosure2_3(data: any) {
         ),
       ],
     }),
+
+    new Paragraph({
+      text: '',
+    }),
   ];
 }

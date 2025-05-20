@@ -1,15 +1,8 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
+import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_16(data: any) {
+export function generateDisclosureCommunicationCriticalConcerns(data: any) {
   const rows = [
     ['total number of critical concerns', data?.totalConcerns],
     [
@@ -19,10 +12,21 @@ export function generateDisclosure2_16(data: any) {
   ];
 
   return [
-    new Paragraph({
-      text: 'Disclosure 2-16 Communication of critical concerns',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Communication of critical concerns', [
+          'GRI 2-16',
+          'ESRS 2 GOV-2_01',
+          'ESRS 2 GOV-2_03',
+          'G1-1_01,G1-3_03',
+        ]),
+      ],
     }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [

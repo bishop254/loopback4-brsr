@@ -7,6 +7,7 @@ import {
   TextRun,
   WidthType,
 } from 'docx';
+import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosure2_9(data: any) {
   const rows = [
@@ -22,9 +23,35 @@ export function generateDisclosure2_9(data: any) {
 
   return [
     new Paragraph({
-      text: 'Disclosure 2-9 Governance structure and composition',
+      text: 'Governance',
       heading: HeadingLevel.HEADING_2,
     }),
+
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Governance structure and composition', [
+          'GRI 2-9',
+          'ESRS 2 GOV-1_01',
+          'ESRS 2 GOV-1_02',
+          'ESRS 2 GOV-1_03',
+          'ESRS 2 GOV-1_04',
+          'ESRS 2 GOV-1_05',
+          'ESRS 2 GOV-1_06',
+          'ESRS 2 GOV-1_07',
+          'ESRS 2 GOV-1_08',
+          'ESRS 2 GOV-1_16',
+          'ESRS 2 GOV-1_17',
+          'ESRS 2 G1-5_11',
+          'GRI 2-10',
+          'GRI 2-11',
+        ]),
+      ],
+    }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [

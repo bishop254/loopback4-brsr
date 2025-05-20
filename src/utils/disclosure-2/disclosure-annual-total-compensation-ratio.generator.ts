@@ -1,18 +1,20 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
+import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_21(data: any) {
+export function generateDisclosureAnnualTotalCompensationRatio(data: any) {
   return [
-    new Paragraph({
-      text: 'Disclosure 2-21 Annual total compensation ratio',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Annual total compensation ratio', [
+          'GRI 2-21',
+          'S1-16_02',
+          'S1-16_03',
+        ]),
+      ],
     }),
 
     new Table({
