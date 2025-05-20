@@ -1,5 +1,4 @@
 import {
-  BorderStyle,
   HeadingLevel,
   Paragraph,
   Table,
@@ -10,18 +9,11 @@ import {
 } from 'docx';
 import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_1(data: any) {
-  const noBorders = {
-    top: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
-    bottom: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
-    left: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
-    right: {style: BorderStyle.NONE, size: 0, color: 'FFFFFF'},
-  };
-
+export function generateDisclosureOrganizationReportingPractices(data: any) {
   return [
     new Paragraph({
       text: 'The organization and its reporting practices',
-      heading: HeadingLevel.HEADING_2,
+      heading: HeadingLevel.HEADING_1,
     }),
 
     new Table({

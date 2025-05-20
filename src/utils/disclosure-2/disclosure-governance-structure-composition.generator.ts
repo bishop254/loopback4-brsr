@@ -9,7 +9,7 @@ import {
 } from 'docx';
 import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_9(data: any) {
+export function generateDisclosureGovernanceStructureComposition(data: any) {
   const rows = [
     'executive and non-executive members',
     'Independence',
@@ -24,7 +24,7 @@ export function generateDisclosure2_9(data: any) {
   return [
     new Paragraph({
       text: 'Governance',
-      heading: HeadingLevel.HEADING_2,
+      heading: HeadingLevel.HEADING_1,
     }),
 
     new Table({

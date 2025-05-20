@@ -13,7 +13,7 @@ export function generateDisclosureMaterialityAssessment(data: any) {
   return [
     new Paragraph({
       text: 'Materiality Assessment',
-      heading: HeadingLevel.HEADING_2,
+      heading: HeadingLevel.HEADING_1,
     }),
 
     new Table({

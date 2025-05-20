@@ -1,7 +1,7 @@
 import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure3_2(data: any) {
+export function generateDisclosureMaterialTopics(data: any) {
   const rows = (data?.materialTopics ?? []).map((item: any) => {
     return new TableRow({
       children: [

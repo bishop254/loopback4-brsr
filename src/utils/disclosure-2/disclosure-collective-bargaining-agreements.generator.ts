@@ -1,27 +1,36 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
+import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_30(data: any) {
+export function generateDisclosureCollectiveBargainingAgreements(data: any) {
   const rows = [
     [
       'Percentage of total employees covered by collective bargaining agreements;',
       data?.percentageCovered,
     ],
+    ['Number of work stoppages', data?.percentageCovered],
+    ['Total days idle', data?.percentageCovered],
   ];
 
   return [
-    new Paragraph({
-      text: 'Disclosure 2-30 Collective bargaining agreements',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Collective bargaining agreements', [
+          'TR-AU-310a',
+          'GRI 2-30',
+          'S1-8_01',
+          'S1-8_02',
+          'S1-8_03',
+          'S1-8_04',
+          'S1-8_08',
+        ]),
+      ],
     }),
+
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
@@ -56,6 +65,7 @@ export function generateDisclosure2_30(data: any) {
         ),
       ],
     }),
+
     ...emptyTable({}),
   ];
 }

@@ -1,14 +1,7 @@
-import {
-  HeadingLevel,
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-  TextRun,
-  WidthType,
-} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
+import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_27(data: any) {
+export function generateDisclosureComplianceLawsRegulations(data: any) {
   const firstTableRows = [
     [
       'the total number of significant instances of non-compliance with laws and regulations during the reporting period,',
@@ -37,9 +30,20 @@ export function generateDisclosure2_27(data: any) {
   ];
 
   return [
-    new Paragraph({
-      text: 'Disclosure 2-27 Compliance with laws and regulations',
-      heading: HeadingLevel.HEADING_2,
+    new Table({
+      width: {
+        size: 100,
+        type: WidthType.PERCENTAGE,
+      },
+      rows: [
+        generateTitleRow('Compliance with laws and regulations', [
+          'ESRS 2 SBM-3_08',
+          'S1-17_05',
+          'S1-17_07',
+          'S1-17_11',
+          'GRI 2-27',
+        ]),
+      ],
     }),
 
     new Table({

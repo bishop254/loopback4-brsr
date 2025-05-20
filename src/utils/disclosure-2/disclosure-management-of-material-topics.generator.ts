@@ -2,7 +2,7 @@ import {Table, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
 import {generateTitleRow} from '../title&ref';
 
-export function generateDisclosure2_28(data: any) {
+export function generateDisclosureManagementMaterialTopics(data: any) {
   return [
     new Table({
       width: {

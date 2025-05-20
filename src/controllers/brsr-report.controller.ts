@@ -10,7 +10,6 @@ import {
   Paragraph,
   TableOfContents,
 } from 'docx';
-import {generateDisclosure2_1} from '../utils/disclosure-2/disclosure-2-1.generator';
 import {generateDisclosure2_2} from '../utils/disclosure-2/disclosure-2-2.generator';
 import {generateDisclosure2_3} from '../utils/disclosure-2/disclosure-2-3.generator';
 import {generateDisclosure2_4} from '../utils/disclosure-2/disclosure-2-4.generator';
@@ -18,14 +17,34 @@ import {generateDisclosure2_5} from '../utils/disclosure-2/disclosure-2-5.genera
 import {generateDisclosure2_6} from '../utils/disclosure-2/disclosure-2-6.generator';
 import {generateDisclosure2_7} from '../utils/disclosure-2/disclosure-2-7.generator';
 import {generateDisclosure2_8} from '../utils/disclosure-2/disclosure-2-8.generator';
-import {generateDisclosure2_9} from '../utils/disclosure-2/disclosure-2-9.generator';
+import {generateDisclosureAnnualTotalCompensationRatio} from '../utils/disclosure-2/disclosure-annual-total-compensation-ratio.generator';
+import {generateDisclosureAntiCompetitiveBehavior} from '../utils/disclosure-2/disclosure-anti-competitive-behavior.generator';
+import {generateDisclosureAntiCorruption} from '../utils/disclosure-2/disclosure-anti-corruption.generator';
+import {generateDisclosureCollectiveBargainingAgreements} from '../utils/disclosure-2/disclosure-collective-bargaining-agreements.generator';
+import {generateDisclosureComplianceLawsRegulations} from '../utils/disclosure-2/disclosure-compliance-laws-regulations.generator';
 import {generateDisclosureConflictsInterest} from '../utils/disclosure-2/disclosure-conflicts-of-interest.generator';
-import {generateDisclosure2_28} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
+import {generateDisclosureEconomicPerformance} from '../utils/disclosure-2/disclosure-economic-performance.generator';
+import {generateDisclosureGovernanceStructureComposition} from '../utils/disclosure-2/disclosure-governance-structure-composition.generator';
+import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
+import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
+import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure-market-presence.generator';
 import {generateDisclosureMaterialityAssessment} from '../utils/disclosure-2/disclosure-materiality-assessment.generator';
+import {generateDisclosureMembershipAssociations} from '../utils/disclosure-2/disclosure-membership-associations.generator';
+import {generateDisclosureOrganizationReportingPractices} from '../utils/disclosure-2/disclosure-organization-reporting-practices.generator';
+import {generateDisclosurePolicyCommitments} from '../utils/disclosure-2/disclosure-policy-commitments.generator';
+import {generateDisclosureGrievanceRedressal} from '../utils/disclosure-2/disclosure-policy-grievance-redressal.generator';
+import {generateDisclosurePoliticalContributions} from '../utils/disclosure-2/disclosure-political-contributions.generator';
+import {generateDisclosureProcurementPractices} from '../utils/disclosure-2/disclosure-procurement-practices.generator';
+import {generateDisclosurePublicPolicy} from '../utils/disclosure-2/disclosure-public-policy.generator';
 import {generateDisclosureRemuneration} from '../utils/disclosure-2/disclosure-remuneration.generator';
+import {generateDisclosureRisksOpportunitiesClimateChange} from '../utils/disclosure-2/disclosure-risks-opportunities-climate-change.generator';
 import {generateDisclosureRolesResponsibilities} from '../utils/disclosure-2/disclosure-roles-responsibilities-governance-body.generator';
 import {generateDisclosureStakeholderEngagement} from '../utils/disclosure-2/disclosure-stakeholder-engagement.generator';
-import {generateDisclosure3_2} from '../utils/disclosure-3/disclosure-list-of-material-topics.generator';
+import {generateDisclosureStrategyPoliciesPractices} from '../utils/disclosure-2/disclosure-strategy-policies-practices.generator';
+import {generateDisclosureSupplierEnvironmental} from '../utils/disclosure-2/disclosure-supplier-environmental-assessment.generator';
+import {generateDisclosureSupplierSocialAssessment} from '../utils/disclosure-2/disclosure-supplier-social-assessment.generator';
+import {generateDisclosureTax} from '../utils/disclosure-2/disclosure-tax.generator';
+import {generateDisclosureMaterialTopics} from '../utils/disclosure-3/disclosure-list-of-material-topics.generator';
 
 export class ReportController {
   constructor(@inject(RestBindings.Http.RESPONSE) private response: Response) {}
@@ -50,24 +69,41 @@ export class ReportController {
             }),
             new Paragraph({text: '', children: [new PageBreak()]}),
 
-            ...generateDisclosure2_1(data.disclosure_2_1 ?? {}),
-            ...generateDisclosure2_2(data.disclosure_2_2 ?? {}),
-            ...generateDisclosure2_3(data.disclosure_2_3 ?? {}),
-            ...generateDisclosure2_4(data.disclosure_2_4 ?? {}),
-            ...generateDisclosure2_5(data.disclosure_2_5 ?? {}),
-            ...generateDisclosure2_6(data.disclosure_2_6 ?? {}),
-            ...generateDisclosure2_7(data.disclosure_2_7 ?? {}),
-            ...generateDisclosure2_8(data.disclosure_2_8 ?? {}),
-            ...generateDisclosureStakeholderEngagement(
-              data.disclosure_2_29 ?? {},
-            ),
+            ...generateDisclosureOrganizationReportingPractices({}),
+            ...generateDisclosure2_2({}),
+            ...generateDisclosure2_3({}),
+            ...generateDisclosure2_4({}),
+            ...generateDisclosure2_5({}),
+            ...generateDisclosure2_6({}),
+            ...generateDisclosure2_7({}),
+            ...generateDisclosure2_8({}),
+            ...generateDisclosureStakeholderEngagement({}),
             ...generateDisclosureMaterialityAssessment({}),
-            ...generateDisclosure3_2(data.disclosure_3_2 ?? {}),
-            ...generateDisclosure2_28({}),
-            ...generateDisclosure2_9(data.disclosure_2_9 ?? {}),
+            ...generateDisclosureMaterialTopics({}),
+            ...generateDisclosureManagementMaterialTopics({}),
+            ...generateDisclosureGovernanceStructureComposition({}),
             ...generateDisclosureRolesResponsibilities({}),
             ...generateDisclosureConflictsInterest({}),
             ...generateDisclosureRemuneration({}),
+            ...generateDisclosureAnnualTotalCompensationRatio({}),
+            ...generateDisclosureStrategyPoliciesPractices({}),
+            ...generateDisclosurePolicyCommitments({}),
+            ...generateDisclosureGrievanceRedressal({}),
+            ...generateDisclosureComplianceLawsRegulations({}),
+            ...generateDisclosureMembershipAssociations({}),
+            ...generateDisclosureCollectiveBargainingAgreements({}),
+            ...generateDisclosureEconomicPerformance({}),
+            ...generateDisclosureRisksOpportunitiesClimateChange({}),
+            ...generateDisclosureMarketPresence({}),
+            ...generateDisclosureIndirectEconomicImpact({}),
+            ...generateDisclosureProcurementPractices({}),
+            ...generateDisclosureSupplierEnvironmental({}),
+            ...generateDisclosureSupplierSocialAssessment({}),
+            ...generateDisclosureAntiCorruption({}),
+            ...generateDisclosureAntiCompetitiveBehavior({}),
+            ...generateDisclosureTax({}),
+            ...generateDisclosurePublicPolicy({}),
+            ...generateDisclosurePoliticalContributions({}),
           ],
         },
       ],
