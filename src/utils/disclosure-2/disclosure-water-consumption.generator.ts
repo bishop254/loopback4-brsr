@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureWaterConsumption(data: any) {
@@ -25,15 +25,34 @@ export function generateDisclosureWaterConsumption(data: any) {
           children: [
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water consumption [GRI 303-5]')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water consumption [GRI 303-5]',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('ALL AREAS')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'ALL AREAS', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('AREAS WITH WATER STRESS')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'AREAS WITH WATER STRESS', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -86,20 +105,39 @@ export function generateDisclosureWaterConsumption(data: any) {
             new TableCell({
               width: {size: 25, type: WidthType.PERCENTAGE},
               children: [
-                new Paragraph('FACILITIES IN AREAS WITH WATER STRESS'),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'FACILITIES IN AREAS WITH WATER STRESS',
+                      bold: true,
+                    }),
+                  ],
+                }),
               ],
             }),
             new TableCell({
               width: {size: 25, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('FACILITY A')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'FACILITY A', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 25, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('FACILITY B')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'FACILITY B', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 25, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('[FACILITY X]')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: '[FACILITY X]', bold: true})],
+                }),
+              ],
             }),
           ],
         }),
@@ -108,8 +146,17 @@ export function generateDisclosureWaterConsumption(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water withdrawal (clause 2.2.1)')],
               columnSpan: 4,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water withdrawal (clause 2.2.1)',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -142,8 +189,17 @@ export function generateDisclosureWaterConsumption(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water consumption (clause 2.5.1)')],
               columnSpan: 4,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water consumption (clause 2.5.1)',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),

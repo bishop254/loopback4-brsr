@@ -4,6 +4,7 @@ import {
   Table,
   TableCell,
   TableRow,
+  TextRun,
   WidthType,
 } from 'docx';
 import {generateTitleRow} from '../title&ref';
@@ -43,15 +44,31 @@ export function generateDisclosureMaterials(data: any) {
           children: [
             new TableCell({
               width: {size: 33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Materials')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Materials', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('non-renewable materials')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'non-renewable materials', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 34, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('renewable materials')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'renewable materials', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -107,11 +124,19 @@ export function generateDisclosureMaterials(data: any) {
           children: [
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particular')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particular', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: '', bold: true})],
+                }),
+              ],
             }),
           ],
         }),
@@ -157,14 +182,25 @@ export function generateDisclosureMaterials(data: any) {
           children: [
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Product category')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Product category', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
-                new Paragraph(
-                  'Percentage of reclaimed products and their packaging materials',
-                ),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Percentage of reclaimed products and their packaging materials',
+                      bold: true,
+                    }),
+                  ],
+                }),
               ],
             }),
           ],

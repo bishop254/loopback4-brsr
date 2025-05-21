@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureEnergyOutside(data: any) {
@@ -55,11 +55,21 @@ export function generateDisclosureEnergyOutside(data: any) {
           children: [
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particulars')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particulars', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Unite of Measurement')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Unite of Measurement', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -89,11 +99,21 @@ export function generateDisclosureEnergyOutside(data: any) {
           children: [
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particulars')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particulars', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Unite of Measurement')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Unite of Measurement', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),

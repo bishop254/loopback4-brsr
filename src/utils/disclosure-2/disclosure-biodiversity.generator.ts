@@ -1,4 +1,13 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {
+  AlignmentType,
+  Paragraph,
+  Table,
+  TableCell,
+  TableRow,
+  TextRun,
+  VerticalAlign,
+  WidthType,
+} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureBiodiversity(data: any) {
@@ -26,27 +35,72 @@ export function generateDisclosureBiodiversity(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              rowSpan: 2,
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particulars')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particulars', bold: true})],
+                }),
+              ],
+              verticalAlign: VerticalAlign.CENTER,
             }),
             new TableCell({
+              rowSpan: 2,
               width: {size: 20, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Remarks')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Remarks', bold: true})],
+                }),
+              ],
+              verticalAlign: VerticalAlign.CENTER,
             }),
             new TableCell({
-              width: {size: 13.33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Owned')],
-            }),
-            new TableCell({
-              width: {size: 13.33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Leased')],
-            }),
-            new TableCell({
-              width: {size: 13.33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Managed')],
+              columnSpan: 3,
+              width: {size: 40, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  alignment: AlignmentType.CENTER,
+                  children: [
+                    new TextRun({
+                      text: 'Operational Sites',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
+        new TableRow({
+          children: [
+            new TableCell({
+              width: {size: 13.33, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Owned', bold: true})],
+                }),
+              ],
+            }),
+            new TableCell({
+              width: {size: 13.33, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Leased', bold: true})],
+                }),
+              ],
+            }),
+            new TableCell({
+              width: {size: 13.33, type: WidthType.PERCENTAGE},
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Managed', bold: true})],
+                }),
+              ],
+            }),
+          ],
+        }),
+
+        // Data Rows
         new TableRow({
           children: [
             new TableCell({children: [new Paragraph('Geographic location')]}),
@@ -176,15 +230,27 @@ export function generateDisclosureBiodiversity(data: any) {
           children: [
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particulars')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particulars', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Size')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Size', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Location')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Location', bold: true})],
+                }),
+              ],
             }),
           ],
         }),
@@ -214,14 +280,25 @@ export function generateDisclosureBiodiversity(data: any) {
           children: [
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Level of extinction list')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Level of extinction list', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
-                new Paragraph(
-                  'Total number of IUCN Red List species and national conservation list species',
-                ),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Total number of IUCN Red List species and national conservation list species',
+                      bold: true,
+                    }),
+                  ],
+                }),
               ],
             }),
           ],

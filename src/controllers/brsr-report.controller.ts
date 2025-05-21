@@ -17,20 +17,27 @@ import {generateDisclosure2_5} from '../utils/disclosure-2/disclosure-2-5.genera
 import {generateDisclosure2_6} from '../utils/disclosure-2/disclosure-2-6.generator';
 import {generateDisclosure2_7} from '../utils/disclosure-2/disclosure-2-7.generator';
 import {generateDisclosure2_8} from '../utils/disclosure-2/disclosure-2-8.generator';
+import {generateDisclosureAirEmissions} from '../utils/disclosure-2/disclosure-air-emissions.generator';
 import {generateDisclosureAnnualTotalCompensationRatio} from '../utils/disclosure-2/disclosure-annual-total-compensation-ratio.generator';
 import {generateDisclosureAntiCompetitiveBehavior} from '../utils/disclosure-2/disclosure-anti-competitive-behavior.generator';
 import {generateDisclosureAntiCorruption} from '../utils/disclosure-2/disclosure-anti-corruption.generator';
 import {generateDisclosureBiodiversity} from '../utils/disclosure-2/disclosure-biodiversity.generator';
+import {generateDisclosureCarbonPricing} from '../utils/disclosure-2/disclosure-carbon-pricing.generator';
 import {generateDisclosureCollectiveBargainingAgreements} from '../utils/disclosure-2/disclosure-collective-bargaining-agreements.generator';
 import {generateDisclosureComplianceLawsRegulations} from '../utils/disclosure-2/disclosure-compliance-laws-regulations.generator';
 import {generateDisclosureConflictsInterest} from '../utils/disclosure-2/disclosure-conflicts-of-interest.generator';
 import {generateDisclosureEconomicPerformance} from '../utils/disclosure-2/disclosure-economic-performance.generator';
+import {generateDisclosureGHGIntensity} from '../utils/disclosure-2/disclosure-emissions-intensity.generator';
+import {generateDisclosureODS} from '../utils/disclosure-2/disclosure-emissions-ods.generator';
+import {generateDisclosureGHGReduction} from '../utils/disclosure-2/disclosure-emissions-reduction.generator';
+import {generateDisclosureEmissionsGHG} from '../utils/disclosure-2/disclosure-emissions.generator';
 import {generateDisclosureEnergyOutside} from '../utils/disclosure-2/disclosure-energy-consumption-outside-organization.generator';
 import {generateDisclosureEnergyReductionProducts} from '../utils/disclosure-2/disclosure-energy-intensity-products-services.generator';
 import {generateDisclosureEnergyIntensity} from '../utils/disclosure-2/disclosure-energy-intensity.generator';
 import {generateDisclosureEnergyReduction} from '../utils/disclosure-2/disclosure-energy-reduction.generator';
 import {generateDisclosureEnergy} from '../utils/disclosure-2/disclosure-energy.generator';
 import {generateDisclosureGovernanceStructureComposition} from '../utils/disclosure-2/disclosure-governance-structure-composition.generator';
+import {generateDisclosureImpactRiskOpportunity} from '../utils/disclosure-2/disclosure-impact-risk-opportunity.generator';
 import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
 import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
 import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure-market-presence.generator';
@@ -46,11 +53,16 @@ import {generateDisclosurePublicPolicy} from '../utils/disclosure-2/disclosure-p
 import {generateDisclosureRemuneration} from '../utils/disclosure-2/disclosure-remuneration.generator';
 import {generateDisclosureRisksOpportunitiesClimateChange} from '../utils/disclosure-2/disclosure-risks-opportunities-climate-change.generator';
 import {generateDisclosureRolesResponsibilities} from '../utils/disclosure-2/disclosure-roles-responsibilities-governance-body.generator';
+import {generateDisclosureSocial} from '../utils/disclosure-2/disclosure-social.generator';
 import {generateDisclosureStakeholderEngagement} from '../utils/disclosure-2/disclosure-stakeholder-engagement.generator';
 import {generateDisclosureStrategyPoliciesPractices} from '../utils/disclosure-2/disclosure-strategy-policies-practices.generator';
 import {generateDisclosureSupplierEnvironmental} from '../utils/disclosure-2/disclosure-supplier-environmental-assessment.generator';
 import {generateDisclosureSupplierSocialAssessment} from '../utils/disclosure-2/disclosure-supplier-social-assessment.generator';
 import {generateDisclosureTax} from '../utils/disclosure-2/disclosure-tax.generator';
+import {generateDisclosureWasteDirected} from '../utils/disclosure-2/disclosure-waste-directed-displosal.generator';
+import {generateDisclosureWasteDiverted} from '../utils/disclosure-2/disclosure-waste-diverted-displosal.generator';
+import {generateDisclosureWasteGenerated} from '../utils/disclosure-2/disclosure-waste-generated.generator';
+import {generateDisclosureWaste} from '../utils/disclosure-2/disclosure-waste.generator';
 import {generateDisclosureWaterConsumption} from '../utils/disclosure-2/disclosure-water-consumption.generator';
 import {generateDisclosureWaterDischarge} from '../utils/disclosure-2/disclosure-water-discharge.generator';
 import {generateDisclosureWaterEffluents} from '../utils/disclosure-2/disclosure-water-effluents.generator';
@@ -126,6 +138,18 @@ export class ReportController {
             ...generateDisclosureWaterDischarge({}),
             ...generateDisclosureWaterConsumption({}),
             ...generateDisclosureBiodiversity({}),
+            ...generateDisclosureEmissionsGHG({}),
+            ...generateDisclosureGHGIntensity({}),
+            ...generateDisclosureGHGReduction({}),
+            ...generateDisclosureCarbonPricing({}),
+            ...generateDisclosureODS({}),
+            ...generateDisclosureAirEmissions({}),
+            ...generateDisclosureImpactRiskOpportunity({}),
+            ...generateDisclosureWaste({}),
+            ...generateDisclosureWasteGenerated({}),
+            ...generateDisclosureWasteDiverted({}),
+            ...generateDisclosureWasteDirected({}),
+            ...generateDisclosureSocial({}),
           ],
         },
       ],

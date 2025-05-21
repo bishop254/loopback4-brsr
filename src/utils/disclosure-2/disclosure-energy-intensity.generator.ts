@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureEnergyIntensity(data: any) {
@@ -17,15 +17,31 @@ export function generateDisclosureEnergyIntensity(data: any) {
           children: [
             new TableCell({
               width: {size: 34, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particular')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particular', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Within the Organization')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Within the Organization', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 33, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Outside of organization')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Outside of organization', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),

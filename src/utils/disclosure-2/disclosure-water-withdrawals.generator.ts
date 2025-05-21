@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {emptyTable} from '../empty-table';
 import {generateTitleRow} from '../title&ref';
 
@@ -43,15 +43,34 @@ export function generateDisclosureWaterWithdrawal(data: any) {
           children: [
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water withdrawal [GRI 303-3]')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water withdrawal [GRI 303-3]',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('ALL AREAS')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'ALL AREAS', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('AREAS WITH WATER STRESS')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'AREAS WITH WATER STRESS', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -60,7 +79,16 @@ export function generateDisclosureWaterWithdrawal(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water withdrawal by source')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water withdrawal by source',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
               columnSpan: 3,
             }),
           ],
@@ -91,9 +119,14 @@ export function generateDisclosureWaterWithdrawal(data: any) {
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
               children: [
-                new Paragraph(
-                  'Total third-party water withdrawal by withdrawal source',
-                ),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Total third-party water withdrawal by withdrawal source',
+                      bold: true,
+                    }),
+                  ],
+                }),
               ],
               columnSpan: 3,
             }),
@@ -124,7 +157,13 @@ export function generateDisclosureWaterWithdrawal(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Total water withdrawal')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Total water withdrawal', bold: true}),
+                  ],
+                }),
+              ],
               columnSpan: 3,
             }),
           ],

@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureWaterDischarge(data: any) {
@@ -37,15 +37,34 @@ export function generateDisclosureWaterDischarge(data: any) {
           children: [
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water discharge [GRI 303-4]')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water discharge [GRI 303-4]',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('ALL AREAS')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'ALL AREAS', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('AREAS WITH WATER STRESS')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'AREAS WITH WATER STRESS', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -54,8 +73,17 @@ export function generateDisclosureWaterDischarge(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Water discharge by destination')],
               columnSpan: 3,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water discharge by destination',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -84,8 +112,14 @@ export function generateDisclosureWaterDischarge(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Total water discharge')],
               columnSpan: 3,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Total water discharge', bold: true}),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -115,10 +149,17 @@ export function generateDisclosureWaterDischarge(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [
-                new Paragraph('Water discharge by freshwater and other water'),
-              ],
               columnSpan: 3,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water discharge by freshwater and other water',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),
@@ -147,12 +188,17 @@ export function generateDisclosureWaterDischarge(data: any) {
           children: [
             new TableCell({
               width: {size: 100, type: WidthType.PERCENTAGE},
-              children: [
-                new Paragraph(
-                  'Water discharge by level of treatment Note that this is recommended, but not required',
-                ),
-              ],
               columnSpan: 3,
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Water discharge by level of treatment Note that this is recommended, but not required',
+                      bold: true,
+                    }),
+                  ],
+                }),
+              ],
             }),
           ],
         }),

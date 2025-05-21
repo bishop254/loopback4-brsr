@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureEnergyReduction(data: any) {
@@ -22,18 +22,31 @@ export function generateDisclosureEnergyReduction(data: any) {
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
               children: [
-                new Paragraph(
-                  'Amount of reductions in energy consumption (joules or multiples)',
-                ),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: 'Amount of reductions in energy consumption (joules or multiples)',
+                      bold: true,
+                    }),
+                  ],
+                }),
               ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Baseline year')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Baseline year', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('FY 2023')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'FY 2023', bold: true})],
+                }),
+              ],
             }),
           ],
         }),

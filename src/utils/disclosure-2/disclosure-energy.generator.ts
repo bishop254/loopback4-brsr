@@ -1,4 +1,4 @@
-import {Paragraph, Table, TableCell, TableRow, WidthType} from 'docx';
+import {Paragraph, Table, TableCell, TableRow, TextRun, WidthType} from 'docx';
 import {generateTitleRow} from '../title&ref';
 
 export function generateDisclosureEnergy(data: any) {
@@ -61,19 +61,37 @@ export function generateDisclosureEnergy(data: any) {
           children: [
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particular')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particular', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Unit of Measurement')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Unit of Measurement', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 20, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Non-renewable')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Non-renewable', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 20, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Renewable')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Renewable', bold: true})],
+                }),
+              ],
             }),
           ],
         }),
@@ -109,15 +127,29 @@ export function generateDisclosureEnergy(data: any) {
           children: [
             new TableCell({
               width: {size: 40, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Particulars')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: 'Particulars', bold: true})],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('Unite of Measurement')],
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({text: 'Unite of Measurement', bold: true}),
+                  ],
+                }),
+              ],
             }),
             new TableCell({
               width: {size: 30, type: WidthType.PERCENTAGE},
-              children: [new Paragraph('')],
+              children: [
+                new Paragraph({
+                  children: [new TextRun({text: '', bold: true})],
+                }),
+              ],
             }),
           ],
         }),
