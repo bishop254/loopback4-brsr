@@ -21,13 +21,16 @@ import {generateDisclosureAirEmissions} from '../utils/disclosure-2/disclosure-a
 import {generateDisclosureAnnualTotalCompensationRatio} from '../utils/disclosure-2/disclosure-annual-total-compensation-ratio.generator';
 import {generateDisclosureAntiCompetitiveBehavior} from '../utils/disclosure-2/disclosure-anti-competitive-behavior.generator';
 import {generateDisclosureAntiCorruption} from '../utils/disclosure-2/disclosure-anti-corruption.generator';
+import {generateDisclosureBasicSalaryRemuneration} from '../utils/disclosure-2/disclosure-basic-salary.generator';
 import {generateDisclosureBenefitsProvided} from '../utils/disclosure-2/disclosure-benefits-provided.generator';
 import {generateDisclosureBiodiversity} from '../utils/disclosure-2/disclosure-biodiversity.generator';
 import {generateDisclosureCarbonPricing} from '../utils/disclosure-2/disclosure-carbon-pricing.generator';
 import {generateDisclosureCareerDevelopment} from '../utils/disclosure-2/disclosure-career-devt-program.generator';
+import {generateDisclosureChildLabor} from '../utils/disclosure-2/disclosure-child-labour.generator';
 import {generateDisclosureCollectiveBargainingAgreements} from '../utils/disclosure-2/disclosure-collective-bargaining-agreements.generator';
 import {generateDisclosureComplianceLawsRegulations} from '../utils/disclosure-2/disclosure-compliance-laws-regulations.generator';
 import {generateDisclosureConflictsInterest} from '../utils/disclosure-2/disclosure-conflicts-of-interest.generator';
+import {generateDisclosureDataPrivacy} from '../utils/disclosure-2/disclosure-cybersecurity.generator';
 import {generateDisclosureDiversityInclusion} from '../utils/disclosure-2/disclosure-diversity-inclusion.generator';
 import {generateDisclosureEconomicPerformance} from '../utils/disclosure-2/disclosure-economic-performance.generator';
 import {generateDisclosureGHGIntensity} from '../utils/disclosure-2/disclosure-emissions-intensity.generator';
@@ -39,16 +42,22 @@ import {generateDisclosureEnergyReductionProducts} from '../utils/disclosure-2/d
 import {generateDisclosureEnergyIntensity} from '../utils/disclosure-2/disclosure-energy-intensity.generator';
 import {generateDisclosureEnergyReduction} from '../utils/disclosure-2/disclosure-energy-reduction.generator';
 import {generateDisclosureEnergy} from '../utils/disclosure-2/disclosure-energy.generator';
+import {generateDisclosureForcedLabour} from '../utils/disclosure-2/disclosure-forced-labour.generator';
 import {generateDisclosureGovernanceStructureComposition} from '../utils/disclosure-2/disclosure-governance-structure-composition.generator';
 import {generateDisclosureHazardIdentification} from '../utils/disclosure-2/disclosure-hazard-identification.generator';
 import {generateDisclosureHumanCapitalDevelopment} from '../utils/disclosure-2/disclosure-human-capital-devt.generator';
+import {generateDisclosureHumanRights} from '../utils/disclosure-2/disclosure-human-rights.generator';
+import {generateDisclosureCustomerImpact} from '../utils/disclosure-2/disclosure-impact-on-customers.generator';
 import {generateDisclosureImpactRiskOpportunity} from '../utils/disclosure-2/disclosure-impact-risk-opportunity.generator';
+import {generateDisclosureIndigenousRights} from '../utils/disclosure-2/disclosure-indigenous-rights.generator';
 import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
+import {generateDisclosureLocalCommunities} from '../utils/disclosure-2/disclosure-local-communities.generator';
 import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
 import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure-market-presence.generator';
 import {generateDisclosureMaterialityAssessment} from '../utils/disclosure-2/disclosure-materiality-assessment.generator';
 import {generateDisclosureMaterials} from '../utils/disclosure-2/disclosure-materials.generator';
 import {generateDisclosureMembershipAssociations} from '../utils/disclosure-2/disclosure-membership-associations.generator';
+import {generateDisclosureNonDiscrimination} from '../utils/disclosure-2/disclosure-non-discrimation.generator ';
 import {generateDisclosureHealthServices} from '../utils/disclosure-2/disclosure-o-health-services.generator';
 import {generateDisclosureOHSSafety} from '../utils/disclosure-2/disclosure-ohs.generator';
 import {generateDisclosureOrganizationReportingPractices} from '../utils/disclosure-2/disclosure-organization-reporting-practices.generator';
@@ -58,10 +67,12 @@ import {generateDisclosureGrievanceRedressal} from '../utils/disclosure-2/disclo
 import {generateDisclosurePoliticalContributions} from '../utils/disclosure-2/disclosure-political-contributions.generator';
 import {generateDisclosurePreventionMitigationOccupationalHealthSafetyImpacts} from '../utils/disclosure-2/disclosure-prevention-mitigation-occupational-health-safety-impacts.generator';
 import {generateDisclosureProcurementPractices} from '../utils/disclosure-2/disclosure-procurement-practices.generator';
+import {generateDisclosureProductServiceQuality} from '../utils/disclosure-2/disclosure-product-services-quality.generator';
 import {generateDisclosurePublicPolicy} from '../utils/disclosure-2/disclosure-public-policy.generator';
 import {generateDisclosureRemuneration} from '../utils/disclosure-2/disclosure-remuneration.generator';
 import {generateDisclosureRisksOpportunitiesClimateChange} from '../utils/disclosure-2/disclosure-risks-opportunities-climate-change.generator';
 import {generateDisclosureRolesResponsibilities} from '../utils/disclosure-2/disclosure-roles-responsibilities-governance-body.generator';
+import {generateDisclosureSecurityPractices} from '../utils/disclosure-2/disclosure-security-practices.generator';
 import {generateDisclosureSocial} from '../utils/disclosure-2/disclosure-social.generator';
 import {generateDisclosureStakeholderEngagement} from '../utils/disclosure-2/disclosure-stakeholder-engagement.generator';
 import {generateDisclosureStrategyPoliciesPractices} from '../utils/disclosure-2/disclosure-strategy-policies-practices.generator';
@@ -178,6 +189,17 @@ export class ReportController {
             ...generateDisclosureHumanCapitalDevelopment({}),
             ...generateDisclosureCareerDevelopment({}),
             ...generateDisclosureDiversityInclusion({}),
+            ...generateDisclosureBasicSalaryRemuneration({}),
+            ...generateDisclosureNonDiscrimination({}),
+            ...generateDisclosureHumanRights({}),
+            ...generateDisclosureChildLabor({}),
+            ...generateDisclosureForcedLabour({}),
+            ...generateDisclosureIndigenousRights({}),
+            ...generateDisclosureSecurityPractices({}),
+            ...generateDisclosureLocalCommunities({}),
+            ...generateDisclosureCustomerImpact({}),
+            ...generateDisclosureProductServiceQuality({}),
+            ...generateDisclosureDataPrivacy({}),
           ],
         },
       ],

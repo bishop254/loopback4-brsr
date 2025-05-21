@@ -82,25 +82,27 @@ export function generateDisclosureDiversityInclusion(data: any) {
     });
 
   return [
-    // Title + Reference
     new Table({
       width: {size: 100, type: WidthType.PERCENTAGE},
       rows: [
-        generateTitleRow('Diversity & Inclusion', [
-          'S2.SBM-3_01 to S2.SBM-3_09',
-          'GRI 405-1',
-          'ESRS 2 GOV-1_05',
-          'GOV-1_06',
-          'S1-6_01 to S1-6_03',
-          'S1-9_01 to S1-9_05',
-          'S1-12_01',
-        ]),
+        generateTitleRow(
+          'Diversity & Inclusion',
+          [
+            'S2.SBM-3_01 to S2.SBM-3_09',
+            'GRI 405-1',
+            'ESRS 2 GOV-1_05',
+            'GOV-1_06',
+            'S1-6_01 to S1-6_03',
+            'S1-9_01 to S1-9_05',
+            'S1-12_01',
+          ],
+          true,
+        ),
       ],
     }),
 
     new Paragraph({text: ''}),
 
-    // Governance Bodies Table
     new Paragraph({
       text: 'Percentage of individuals within the organization’s governance bodies',
     }),
@@ -116,7 +118,6 @@ export function generateDisclosureDiversityInclusion(data: any) {
 
     new Paragraph({text: ''}),
 
-    // Employee Distribution Table
     new Paragraph({
       text: 'Percentage of employees per employee category',
     }),
