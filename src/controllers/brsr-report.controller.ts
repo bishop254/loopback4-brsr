@@ -21,11 +21,14 @@ import {generateDisclosureAirEmissions} from '../utils/disclosure-2/disclosure-a
 import {generateDisclosureAnnualTotalCompensationRatio} from '../utils/disclosure-2/disclosure-annual-total-compensation-ratio.generator';
 import {generateDisclosureAntiCompetitiveBehavior} from '../utils/disclosure-2/disclosure-anti-competitive-behavior.generator';
 import {generateDisclosureAntiCorruption} from '../utils/disclosure-2/disclosure-anti-corruption.generator';
+import {generateDisclosureBenefitsProvided} from '../utils/disclosure-2/disclosure-benefits-provided.generator';
 import {generateDisclosureBiodiversity} from '../utils/disclosure-2/disclosure-biodiversity.generator';
 import {generateDisclosureCarbonPricing} from '../utils/disclosure-2/disclosure-carbon-pricing.generator';
+import {generateDisclosureCareerDevelopment} from '../utils/disclosure-2/disclosure-career-devt-program.generator';
 import {generateDisclosureCollectiveBargainingAgreements} from '../utils/disclosure-2/disclosure-collective-bargaining-agreements.generator';
 import {generateDisclosureComplianceLawsRegulations} from '../utils/disclosure-2/disclosure-compliance-laws-regulations.generator';
 import {generateDisclosureConflictsInterest} from '../utils/disclosure-2/disclosure-conflicts-of-interest.generator';
+import {generateDisclosureDiversityInclusion} from '../utils/disclosure-2/disclosure-diversity-inclusion.generator';
 import {generateDisclosureEconomicPerformance} from '../utils/disclosure-2/disclosure-economic-performance.generator';
 import {generateDisclosureGHGIntensity} from '../utils/disclosure-2/disclosure-emissions-intensity.generator';
 import {generateDisclosureODS} from '../utils/disclosure-2/disclosure-emissions-ods.generator';
@@ -37,6 +40,8 @@ import {generateDisclosureEnergyIntensity} from '../utils/disclosure-2/disclosur
 import {generateDisclosureEnergyReduction} from '../utils/disclosure-2/disclosure-energy-reduction.generator';
 import {generateDisclosureEnergy} from '../utils/disclosure-2/disclosure-energy.generator';
 import {generateDisclosureGovernanceStructureComposition} from '../utils/disclosure-2/disclosure-governance-structure-composition.generator';
+import {generateDisclosureHazardIdentification} from '../utils/disclosure-2/disclosure-hazard-identification.generator';
+import {generateDisclosureHumanCapitalDevelopment} from '../utils/disclosure-2/disclosure-human-capital-devt.generator';
 import {generateDisclosureImpactRiskOpportunity} from '../utils/disclosure-2/disclosure-impact-risk-opportunity.generator';
 import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
 import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
@@ -44,10 +49,14 @@ import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure
 import {generateDisclosureMaterialityAssessment} from '../utils/disclosure-2/disclosure-materiality-assessment.generator';
 import {generateDisclosureMaterials} from '../utils/disclosure-2/disclosure-materials.generator';
 import {generateDisclosureMembershipAssociations} from '../utils/disclosure-2/disclosure-membership-associations.generator';
+import {generateDisclosureHealthServices} from '../utils/disclosure-2/disclosure-o-health-services.generator';
+import {generateDisclosureOHSSafety} from '../utils/disclosure-2/disclosure-ohs.generator';
 import {generateDisclosureOrganizationReportingPractices} from '../utils/disclosure-2/disclosure-organization-reporting-practices.generator';
+import {generateDisclosureParentalLeave} from '../utils/disclosure-2/disclosure-parental-leave.generator';
 import {generateDisclosurePolicyCommitments} from '../utils/disclosure-2/disclosure-policy-commitments.generator';
 import {generateDisclosureGrievanceRedressal} from '../utils/disclosure-2/disclosure-policy-grievance-redressal.generator';
 import {generateDisclosurePoliticalContributions} from '../utils/disclosure-2/disclosure-political-contributions.generator';
+import {generateDisclosurePreventionMitigationOccupationalHealthSafetyImpacts} from '../utils/disclosure-2/disclosure-prevention-mitigation-occupational-health-safety-impacts.generator';
 import {generateDisclosureProcurementPractices} from '../utils/disclosure-2/disclosure-procurement-practices.generator';
 import {generateDisclosurePublicPolicy} from '../utils/disclosure-2/disclosure-public-policy.generator';
 import {generateDisclosureRemuneration} from '../utils/disclosure-2/disclosure-remuneration.generator';
@@ -59,6 +68,7 @@ import {generateDisclosureStrategyPoliciesPractices} from '../utils/disclosure-2
 import {generateDisclosureSupplierEnvironmental} from '../utils/disclosure-2/disclosure-supplier-environmental-assessment.generator';
 import {generateDisclosureSupplierSocialAssessment} from '../utils/disclosure-2/disclosure-supplier-social-assessment.generator';
 import {generateDisclosureTax} from '../utils/disclosure-2/disclosure-tax.generator';
+import {generateDisclosureTrainingEducation} from '../utils/disclosure-2/disclosure-training-education.generator';
 import {generateDisclosureWasteDirected} from '../utils/disclosure-2/disclosure-waste-directed-displosal.generator';
 import {generateDisclosureWasteDiverted} from '../utils/disclosure-2/disclosure-waste-diverted-displosal.generator';
 import {generateDisclosureWasteGenerated} from '../utils/disclosure-2/disclosure-waste-generated.generator';
@@ -67,6 +77,9 @@ import {generateDisclosureWaterConsumption} from '../utils/disclosure-2/disclosu
 import {generateDisclosureWaterDischarge} from '../utils/disclosure-2/disclosure-water-discharge.generator';
 import {generateDisclosureWaterEffluents} from '../utils/disclosure-2/disclosure-water-effluents.generator';
 import {generateDisclosureWaterWithdrawal} from '../utils/disclosure-2/disclosure-water-withdrawals.generator';
+import {generateDisclosureWorkRelatedIllHealth} from '../utils/disclosure-2/disclosure-work-related-ill-health.generator';
+import {generateDisclosureWorkRelatedInjuries} from '../utils/disclosure-2/disclosure-work-related-injuries.generator';
+import {generateDisclosureWorkerTraining} from '../utils/disclosure-2/disclosure-worker-training.generator';
 import {generateDisclosureMaterialTopics} from '../utils/disclosure-3/disclosure-list-of-material-topics.generator';
 
 export class ReportController {
@@ -150,6 +163,21 @@ export class ReportController {
             ...generateDisclosureWasteDiverted({}),
             ...generateDisclosureWasteDirected({}),
             ...generateDisclosureSocial({}),
+            ...generateDisclosureBenefitsProvided({}),
+            ...generateDisclosureParentalLeave({}),
+            ...generateDisclosureOHSSafety({}),
+            ...generateDisclosureHazardIdentification({}),
+            ...generateDisclosureHealthServices({}),
+            ...generateDisclosureWorkerTraining({}),
+            ...generateDisclosurePreventionMitigationOccupationalHealthSafetyImpacts(
+              {},
+            ),
+            ...generateDisclosureWorkRelatedInjuries({}),
+            ...generateDisclosureWorkRelatedIllHealth({}),
+            ...generateDisclosureTrainingEducation({}),
+            ...generateDisclosureHumanCapitalDevelopment({}),
+            ...generateDisclosureCareerDevelopment({}),
+            ...generateDisclosureDiversityInclusion({}),
           ],
         },
       ],
