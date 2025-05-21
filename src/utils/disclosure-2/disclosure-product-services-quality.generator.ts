@@ -83,9 +83,6 @@ export function generateDisclosureProductServiceQuality(data: any) {
                 }),
               ],
             }),
-            new TableCell({
-              children: [new Paragraph(data?.totalLabelingIncidents ?? '')],
-            }),
           ],
         }),
         new TableRow({
@@ -155,9 +152,6 @@ export function generateDisclosureProductServiceQuality(data: any) {
                   ],
                 }),
               ],
-            }),
-            new TableCell({
-              children: [new Paragraph(data?.totalMarketingIncidents ?? '')],
             }),
           ],
         }),
