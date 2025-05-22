@@ -51,6 +51,7 @@ import {generateDisclosureCustomerImpact} from '../utils/disclosure-2/disclosure
 import {generateDisclosureImpactRiskOpportunity} from '../utils/disclosure-2/disclosure-impact-risk-opportunity.generator';
 import {generateDisclosureIndigenousRights} from '../utils/disclosure-2/disclosure-indigenous-rights.generator';
 import {generateDisclosureIndirectEconomicImpact} from '../utils/disclosure-2/disclosure-indirect-economic-impact.generator';
+import {generateDisclosureMaterialTopics} from '../utils/disclosure-2/disclosure-list-of-material-topics.generator';
 import {generateDisclosureLocalCommunities} from '../utils/disclosure-2/disclosure-local-communities.generator';
 import {generateDisclosureManagementMaterialTopics} from '../utils/disclosure-2/disclosure-management-of-material-topics.generator';
 import {generateDisclosureMarketPresence} from '../utils/disclosure-2/disclosure-market-presence.generator';
@@ -91,7 +92,6 @@ import {generateDisclosureWaterWithdrawal} from '../utils/disclosure-2/disclosur
 import {generateDisclosureWorkRelatedIllHealth} from '../utils/disclosure-2/disclosure-work-related-ill-health.generator';
 import {generateDisclosureWorkRelatedInjuries} from '../utils/disclosure-2/disclosure-work-related-injuries.generator';
 import {generateDisclosureWorkerTraining} from '../utils/disclosure-2/disclosure-worker-training.generator';
-import {generateDisclosureMaterialTopics} from '../utils/disclosure-3/disclosure-list-of-material-topics.generator';
 
 export class ReportController {
   constructor(@inject(RestBindings.Http.RESPONSE) private response: Response) {}

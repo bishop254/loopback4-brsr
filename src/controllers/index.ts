@@ -1,2 +1,2 @@
+export * from './gri-report.controller';
 export * from './ping.controller';
-export * from './brsr-report.controller';
