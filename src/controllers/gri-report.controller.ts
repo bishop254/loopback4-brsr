@@ -98,6 +98,19 @@ export class ReportController {
 
   async generateDocx(data: any): Promise<Buffer> {
     const doc = new Document({
+      styles: {
+        default: {
+          document: {
+            run: {
+              font: 'Lato',
+              size: 20, // 12pt (half-points)
+            },
+            paragraph: {
+              spacing: {after: 120},
+            },
+          },
+        },
+      },
       sections: [
         {
           children: [

@@ -24,45 +24,30 @@ export function generateTitleRow(
   return new TableRow({
     children: [
       new TableCell({
-        width: {size: 85, type: WidthType.PERCENTAGE},
-        children: [
-          !isHeading
-            ? new Paragraph({
-                alignment: AlignmentType.LEFT,
-                children: [
-                  new TextRun({
-                    text: title,
-                    bold: true,
-                  }),
-                ],
-              })
-            : new Paragraph({
-                alignment: AlignmentType.LEFT,
-                heading: HeadingLevel.HEADING_2,
-                children: [
-                  new TextRun({
-                    text: title,
-                    bold: true,
-                  }),
-                ],
-              }),
-        ],
-        borders: noBorders,
-      }),
-      new TableCell({
-        width: {size: 15, type: WidthType.PERCENTAGE},
+        width: {size: 100, type: WidthType.PERCENTAGE},
         children: [
           new Paragraph({
-            alignment: AlignmentType.RIGHT,
+            alignment: AlignmentType.LEFT,
+            heading: isHeading ? HeadingLevel.HEADING_2 : undefined,
+            children: [
+              new TextRun({
+                text: title,
+                bold: true,
+              }),
+            ],
+          }),
+          new Paragraph({
+            alignment: AlignmentType.LEFT,
             children: refs.map(
               (r, i) =>
                 new TextRun({
                   text: r + (i < refs.length - 1 ? ', ' : ''),
                   color: '#ed7d31',
-                  size: '6pt',
+                  size: 16, // 8pt
                 }),
             ),
           }),
+          new Paragraph({}),
         ],
         borders: noBorders,
       }),
