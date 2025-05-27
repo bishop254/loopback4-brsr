@@ -10,7 +10,7 @@ export function generateDisclosureGrievanceRedressal(data: any) {
         type: WidthType.PERCENTAGE,
       },
       rows: [
-        generateTitleRow('Policy commitments', [
+        generateTitleRow('Grievance Redressal', [
           'S1-1_06',
           'S1-1_21',
           'S1-3_01 to S1-3_09',
