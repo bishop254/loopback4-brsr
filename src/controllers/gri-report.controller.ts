@@ -10,6 +10,9 @@ import {
   Paragraph,
   TableOfContents,
 } from 'docx';
+import * as path from 'path';
+import puppeteer from 'puppeteer';
+
 import {generateDisclosure2_2} from '../utils/disclosure-2/disclosure-2-2.generator';
 import {generateDisclosure2_3} from '../utils/disclosure-2/disclosure-2-3.generator';
 import {generateDisclosure2_4} from '../utils/disclosure-2/disclosure-2-4.generator';
@@ -221,7 +224,7 @@ export class ReportController {
     return Packer.toBuffer(doc);
   }
 
-  @post('/generate-report', {
+  @post('/report/download/word', {
     responses: {
       '200': {
         description: 'Generate Sustainability Report',
@@ -269,5 +272,33 @@ export class ReportController {
     } catch (err: any) {
       this.response.status(500).json({error: err.message});
     }
+  }
+
+  @post('/report/download/pdf')
+  async downloadPDF(
+    @inject(RestBindings.Http.RESPONSE) response: Response,
+    @requestBody() body: {html: string},
+  ): Promise<Response> {
+    const html = body.html;
+
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+
+    const page = await browser.newPage();
+    await page.setContent(html, {waitUntil: 'networkidle0'});
+
+    const filePath = path.join(__dirname, '../../files/gri.pdf');
+    await page.pdf({path: filePath, format: 'A4', printBackground: true});
+    await browser.close();
+
+    response.setHeader('Content-Type', 'application/pdf');
+    response.setHeader(
+      'Content-Disposition',
+      'attachment; filename="GRI_Report.pdf"',
+    );
+    response.download(filePath);
+    return response;
   }
 }
