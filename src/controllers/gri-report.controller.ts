@@ -103,7 +103,7 @@ export class ReportController {
           document: {
             run: {
               font: 'Lato',
-              size: 20, // 12pt (half-points)
+              size: 20,
             },
             paragraph: {
               spacing: {after: 120},

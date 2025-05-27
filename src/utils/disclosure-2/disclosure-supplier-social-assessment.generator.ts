@@ -28,6 +28,7 @@ export function generateDisclosureSupplierSocialAssessment(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particular', bold: true})],
@@ -64,6 +65,7 @@ export function generateDisclosureSupplierSocialAssessment(data: any) {
         new TableRow({
           children: [
             new TableCell({
+              width: {size: 50, type: WidthType.PERCENTAGE},
               children: [
                 new Paragraph({
                   children: [new TextRun({text: 'Particular', bold: true})],
