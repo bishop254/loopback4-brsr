@@ -5,6 +5,7 @@ import {
   AlignmentType,
   Document,
   HeadingLevel,
+  ImageRun,
   Packer,
   PageBreak,
   Paragraph,
@@ -13,6 +14,7 @@ import {
 import * as path from 'path';
 import puppeteer from 'puppeteer';
 
+import * as fs from 'fs';
 import {generateDisclosure2_2} from '../utils/disclosure-2/disclosure-2-2.generator';
 import {generateDisclosure2_3} from '../utils/disclosure-2/disclosure-2-3.generator';
 import {generateDisclosure2_4} from '../utils/disclosure-2/disclosure-2-4.generator';
@@ -100,6 +102,8 @@ export class ReportController {
   constructor(@inject(RestBindings.Http.RESPONSE) private response: Response) {}
 
   async generateDocx(data: any): Promise<Buffer> {
+    const imageBuffer = fs.readFileSync('public/coverPage.jpg');
+
     const doc = new Document({
       styles: {
         default: {
@@ -117,6 +121,22 @@ export class ReportController {
       sections: [
         {
           children: [
+            new Paragraph({
+              children: [
+                new ImageRun({
+                  type: 'jpg',
+                  data: imageBuffer,
+                  transformation: {
+                    width: 600,
+                    height: 900,
+                  },
+                }),
+              ],
+              alignment: AlignmentType.CENTER,
+            }),
+
+            new Paragraph({children: [new PageBreak()]}),
+
             new Paragraph({
               text: 'Sustainability Report',
               heading: HeadingLevel.TITLE,
